@@ -111,6 +111,33 @@ const App = () => (
     )}
     </Field>
 
+ <Field 
+      name="personLastName"
+        placeholder="Person's Last Name"
+        validate={required}
+        >{({input, meta, placeholder}) => (
+         <div>
+           <label>Person Last Name: </label>
+           <input {...input} placeholder={placeholder} />
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+
+ <Field 
+      name="personLastName"
+        placeholder="Person's Last Name"
+        validate={required}
+        >{({input, meta, placeholder}) => (
+         <div>
+           <label>Person Last Name: </label>
+           <input {...input} placeholder={placeholder} />
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+
+
     <button class="bttn" type="submit" disabled={submitting}>Submit</button>
     <button class="bttn" type="clear">Clear</button>
     <pre>{JSON.stringify(values, undefined, 2)}</pre>
