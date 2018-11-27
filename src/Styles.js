@@ -40,8 +40,8 @@ export default styled.div`
   img {
     padding-left: 15px;
     padding-top: 15px;
-    height: 30%;
-    width: 50%;
+    height: 15%;
+    width: 20%;
   }
 
   @keyframes App-logo-spin {
@@ -53,8 +53,8 @@ export default styled.div`
     animation: App-logo-spin infinite 20s linear;
     padding-left: 15px;
     padding-top: 15px;
-    height: 30%;
-    width: 50%;
+    height: 15%;
+    width: 20%;
   }
 
   h1 {

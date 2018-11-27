@@ -2,7 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form'
 import Styles from './Styles'
 import logo from './logo.png'
-
+import { withStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve.ms))
 const showResults = async values => {
@@ -105,11 +106,24 @@ const App = () => (
         >{({input, meta, placeholder}) => (
          <div>
            <label>Person Last Name: </label>
-           <input {...input} placeholder={placeholder} />
+           <input {...input} placeholder={placeholder} type={Date}/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
     </Field>
+
+    <TextField 
+      name="personLastName"
+        placeholder="Person's Last Name"
+        validate={required}
+        >{({input, meta, placeholder}) => (
+         <div>
+           <label>Person Last Name: </label>
+           <input {...input} placeholder={placeholder} type={Date}/>
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </TextField>
 
     <button class="bttn" type="submit" disabled={submitting}>Submit</button>
     <button class="bttn" type="clear">Clear</button>
