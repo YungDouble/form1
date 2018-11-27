@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form'
 import Styles from './Styles'
 import logo from './logo.png'
-import { withStyles } from '@material-ui/core/styles'
+//import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve.ms))
@@ -48,12 +48,14 @@ const App = () => (
 
     <Field 
       name="email"
+      component={TextField}
+      type="email"
         placeholder="Email"
         validate={required}
         >{({input, meta, placeholder}) => (
          <div>
            <label>Email: </label>
-           <input {...input} placeholder={placeholder} />
+           <input {...input} placeholder={placeholder} type="email"/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
@@ -106,14 +108,31 @@ const App = () => (
         >{({input, meta, placeholder}) => (
          <div>
            <label>Person Last Name: </label>
-           <input {...input} placeholder={placeholder} type={Date}/>
+           <input {...input} placeholder={placeholder}/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
     </Field>
 
-    <TextField 
-      name="personLastName"
+<div>
+  <label>Person's DOB</label>
+<Field 
+      name="personDOB"
+      component={TextField}
+      type="date"
+      validate={required}
+    
+    >{({input, meta }) => (
+         <div>
+           <input {...input} type="date"/>
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+</div>
+
+    {/* <Field 
+      name="personDOB"
         placeholder="Person's Last Name"
         validate={required}
         >{({input, meta, placeholder}) => (
@@ -123,7 +142,7 @@ const App = () => (
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
-    </TextField>
+    </Field> */}
 
     <button class="bttn" type="submit" disabled={submitting}>Submit</button>
     <button class="bttn" type="clear">Clear</button>
