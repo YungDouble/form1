@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { Form, Field } from 'react-final-form'
 import Styles from './Styles'
 import logo from './logo.png'
 //import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import Radio from './Radio'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve.ms))
 const showResults = async values => {
@@ -73,19 +74,71 @@ const App = () => (
          </div>
     )}
     </Field>
-
+    <label>Record Series</label>
+    <label>
     <Field 
       name="recordSeries"
-        placeholder="Record Series"
+        component={Radio}
         validate={required}
-        >{({input, meta, placeholder}) => (
+        >{({input, meta, }) => (
          <div>
-           <label>Record Series: </label>
-           <input {...input} placeholder="SR, SPED, HR or AR" />
+           
+           <input {...input} type="radio"/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
     </Field>
+    SR
+    </label>
+    <label>
+    <Field 
+      name="recordSeries"
+        component={Radio}
+        validate={required}
+        >{({input, meta, }) => (
+         <div>
+           
+           <input {...input} type="radio"/>
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+    SPED
+    </label>
+
+    <label>
+    <Field 
+      name="recordSeries"
+        component={Radio}
+        validate={required}
+        >{({input, meta, placeholder}) => (
+         <div>
+           
+           <input {...input} type="radio"/>
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+    HR
+    </label>
+
+    <label>
+    <Field 
+      name="recordSeries"
+        component={Radio}
+        validate={required}
+        >{({input, meta, placeholder}) => (
+         <div>
+           
+           <input {...input} type="radio"/>
+           {meta.error && meta.touched && <span>{meta.error}</span>}
+         </div>
+    )}
+    </Field>
+    AR
+    </label>
+
+    
     <h3>Person Information</h3>
     <h6>This is the person the record(s) belong(s) to</h6>
     <Field 
@@ -114,8 +167,6 @@ const App = () => (
     )}
     </Field>
 
-<div>
-  <label>Person's DOB</label>
 <Field 
       name="personDOB"
       component={TextField}
@@ -124,25 +175,27 @@ const App = () => (
     
     >{({input, meta }) => (
          <div>
+         <label>Person's DOB</label>
            <input {...input} type="date"/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
     </Field>
-</div>
 
-    {/* <Field 
-      name="personDOB"
-        placeholder="Person's Last Name"
-        validate={required}
-        >{({input, meta, placeholder}) => (
+    <Field 
+      name="personGWDate"
+      component={TextField}
+      type="date"
+      validate={required}
+    
+    >{({input, meta }) => (
          <div>
-           <label>Person Last Name: </label>
-           <input {...input} placeholder={placeholder} type={Date}/>
+         <label>Grad / Withdrawl</label>
+           <input {...input} type="date"/>
            {meta.error && meta.touched && <span>{meta.error}</span>}
          </div>
     )}
-    </Field> */}
+    </Field>
 
     <button class="bttn" type="submit" disabled={submitting}>Submit</button>
     <button class="bttn" type="clear">Clear</button>
