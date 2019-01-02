@@ -2,15 +2,21 @@ import React from 'react'
 import { Form, Field } from 'react-final-form'
 import Styles from './Styles'
 import logo from './logo.png'
+import { FieldArray } from 'react-final-form-arrays'
 //import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
-import Radio from './Radio'
+import Radio from './checkBox'
+import { fieldSubscriptionItems } from 'final-form';
+import {checkBox, Controls } from './checkBox'
+import { Checkbox } from '@material-ui/core';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve.ms))
 const showResults = async values => {
   await sleep(500) //simulate Server latency
 }
-const required =value => (value ? undefined : 'Required' )
+const rsOPtions = ["SR", "SPED", "ER", "HR"];
+
+const required = value => (value ? undefined : 'Required' )
 const App = () => (
   <Styles>
   <img src={logo} className="App-logo" alt="logo" />
@@ -74,71 +80,56 @@ const App = () => (
          </div>
     )}
     </Field>
-    <label>Record Series</label>
-    <label>
-    <Field 
-      name="recordSeries"
-        component={Radio}
-        validate={required}
-        >{({input, meta, }) => (
-         <div>
-           
-           <input {...input} type="radio"/>
-           {meta.error && meta.touched && <span>{meta.error}</span>}
-         </div>
-    )}
-    </Field>
-    SR
-    </label>
-    <label>
-    <Field 
-      name="recordSeries"
-        component={Radio}
-        validate={required}
-        >{({input, meta, }) => (
-         <div>
-           
-           <input {...input} type="radio"/>
-           {meta.error && meta.touched && <span>{meta.error}</span>}
-         </div>
-    )}
-    </Field>
-    SPED
-    </label>
 
-    <label>
-    <Field 
-      name="recordSeries"
-        component={Radio}
-        validate={required}
-        >{({input, meta, placeholder}) => (
-         <div>
-           
-           <input {...input} type="radio"/>
-           {meta.error && meta.touched && <span>{meta.error}</span>}
-         </div>
-    )}
-    </Field>
-    HR
-    </label>
-
-    <label>
-    <Field 
-      name="recordSeries"
-        component={Radio}
-        validate={required}
-        >{({input, meta, placeholder}) => (
-         <div>
-           
-           <input {...input} type="radio"/>
-           {meta.error && meta.touched && <span>{meta.error}</span>}
-         </div>
-    )}
-    </Field>
-    AR
-    </label>
-
+    <div>
+      <label>Record Series</label>
+      <div>
+        <label>
+            <Field
+          name="recordSeries"
+          component="input"
+          type="checkbox"
+          value="Student Records"
+          />{" "}
+          Student Records
+          </label>
+          <label>
+            <Field
+          name="recordSeries"
+          component="input"
+          type="checkbox"
+          value="SPED Records"
+          />{" "}
+          SPED Records
+          </label>
+          <label>
+            <Field
+          name="recordSeries"
+          component="input"
+          type="checkbox"
+          value="Employee Records"
+          />{" "}
+          Employee Records
+          </label>
+          <label>
+            <Field
+          name="recordSeries"
+          component="input"
+          type="checkbox"
+          value="Admin Records"
+          />{" "}
+          Admin Records
+          </label>
+      </div>
     
+          
+
+    </div>
+    
+    
+       
+
+
     <h3>Person Information</h3>
     <h6>This is the person the record(s) belong(s) to</h6>
     <Field 
